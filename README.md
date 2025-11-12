@@ -8,7 +8,7 @@
 
 Uma plataforma web elegante que combina tecnologia e paixão por literatura para conectar leitores aos livros perfeitos para seu gosto pessoal.
 
-## ✨ Características Principais
+##  Características Principais
 
 ###  Curadoria Inteligente
 - **Busca Automática** no Google Books API
