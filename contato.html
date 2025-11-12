@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang='pt-BR'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Contato — Selene</title>
+  <link href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito:wght@300;400;700&display=swap' rel='stylesheet'>
+  <link rel='stylesheet' href='style.css'>
+  <script src='script.js' defer></script>
+</head>
+<body>
+  <!-- Menu fixo em todas as páginas -->
+  <nav class="fixed-nav">
+    <div class="nav-container">
+      <div class='logo'><h1>A Gata Selene</h1></div>
+      <ul>
+        <li><a href='index.html'>Início</a></li>
+        <li><a href='cadastro.html'>Cadastro</a></li>
+        <li><a href='produtos.html'>Preferências</a></li>
+        <li><a href='contato.html'>Contato</a></li>
+        <li><a href='sobre.html'>Sobre</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class='container'>
+    <header>
+      <div class='logo'><h1>A Gata Selene</h1></div>
+    </header>
+    <main>
+      <div class='pref-card'>
+        <h2>Contato</h2>
+        <p style='color:var(--muted); margin-bottom: 24px;'>Fale com a equipe Selene. Estamos aqui para ajudar você a encontrar suas próximas grandes leituras.</p>
+        
+        <div class="contact-info">
+          <div class="contact-methods">
+            <div class="contact-method">
+              <h4>📧 E-mail</h4>
+              <p>contato@agataselene.com</p>
+              <small>Respondemos em até 24 horas</small>
+            </div>
+            <div class="contact-method">
+              <h4>📱 WhatsApp</h4>
+              <p>(11) 98765-4321</p>
+              <small>Atendimento das 9h às 18h</small>
+            </div>
+            <div class="contact-method">
+              <h4>📍 Endereço</h4>
+              <p>Rua das Letras, 123<br>São Paulo - SP</p>
+              <small>Atendimento presencial com agendamento</small>
+            </div>
+          </div>
+        </div>
+
+        <form id='form-contato'>
+          <div class='form-grid'>
+            <div class='form-group'>
+              <label for='nome-contato'>Nome Completo</label>
+              <input id='nome-contato' type='text' required>
+            </div>
+            <div class='form-group'>
+              <label for='email-contato'>E-mail</label>
+              <input id='email-contato' type='email' required>
+            </div>
+            <div class='form-group'>
+              <label for='telefone'>Telefone</label>
+              <input id='telefone' type='tel' placeholder='(11) 99999-9999'>
+            </div>
+            <div class='form-group'>
+              <label for='assunto'>Assunto</label>
+              <select id='assunto' required>
+                <option value=''>Selecione o assunto</option>
+                <option value='duvida'>Dúvida sobre o serviço</option>
+                <option value='sugestao'>Sugestão de melhoria</option>
+                <option value='problema'>Problema técnico</option>
+                <option value='parceria'>Proposta de parceria</option>
+                <option value='outro'>Outro</option>
+              </select>
+            </div>
+            <div class='form-group' style='grid-column:1 / -1'>
+              <label for='mensagem'>Mensagem</label>
+              <textarea id='mensagem' rows='5' placeholder='Conte-nos como podemos ajudar você...' required></textarea>
+            </div>
+          </div>
+          <div class='btn-center'>
+            <button type='submit' class='primary'>Enviar Mensagem</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>© 2025 A Gata Selene Indica Livro</p>
+    </footer>
+  </div>
+
+  <script>
+    // Script específico para a página de contato
+    document.addEventListener('DOMContentLoaded', function() {
+      const formContato = document.getElementById('form-contato');
+      
+      if (formContato) {
+        formContato.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Coletar dados do formulário
+          const nome = document.getElementById('nome-contato').value;
+          const email = document.getElementById('email-contato').value;
+          const assunto = document.getElementById('assunto').value;
+          const mensagem = document.getElementById('mensagem').value;
+          
+          // Validação simples
+          if (!nome || !email || !assunto || !mensagem) {
+            showAlert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+          }
+          
+          // Simular envio do formulário
+          showAlert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+          formContato.reset();
+        });
+      }
+      
+      // Função para mostrar alertas (reutilizada do script principal)
+      function showAlert(msg) { 
+        const a = document.createElement('div'); 
+        a.className = 'alert'; 
+        a.textContent = msg; 
+        document.body.appendChild(a); 
+        setTimeout(() => a.remove(), 4500); 
+      }
+    });
+  </script>
+</body>
+</html>
