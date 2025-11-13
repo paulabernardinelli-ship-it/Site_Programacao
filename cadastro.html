@@ -3,7 +3,7 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <title>Cadastro — Os Gatos Indicam</title>
+  <title>Contato — Os Gatos Indicam</title>
   <link href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito:wght@300;400;700&display=swap' rel='stylesheet'>
   <link rel='stylesheet' href='style.css'>
   <script src='script.js' defer></script>
@@ -29,81 +29,61 @@
     </header>
     <main>
       <div class='pref-card'>
-        <h2>Cadastro</h2>
-        <p style='color:var(--muted); margin-bottom: 24px;'>Complete seu cadastro para receber recomendações personalizadas dos nossos gatos.</p>
+        <h2>Contato</h2>
+        <p style='color:var(--muted); margin-bottom: 24px;'>Fale com a equipe dos Gatos Indicam. Estamos aqui para ajudar você a encontrar suas próximas grandes leituras.</p>
         
-        <form id='form-cadastro'>
+        <div class="contact-info">
+          <div class="contact-methods">
+            <div class="contact-method">
+              <h4>📧 E-mail</h4>
+              <p>contato@osgatosindicam.com</p>
+              <small>Respondemos em até 24 horas</small>
+            </div>
+            <div class="contact-method">
+              <h4>📱 WhatsApp</h4>
+              <p>(11) 98765-4321</p>
+              <small>Atendimento das 9h às 18h</small>
+            </div>
+            <div class="contact-method">
+              <h4>📍 Redes Sociais</h4>
+              <p>@osgatosindicam</p>
+              <small>Instagram e Facebook</small>
+            </div>
+          </div>
+        </div>
+
+        <form id='form-contato'>
           <div class='form-grid'>
-            <!-- Dados Pessoais -->
             <div class='form-group'>
-              <label for='nome'>Nome completo *</label>
-              <input id='nome' type='text' required>
+              <label for='nome-contato'>Nome Completo</label>
+              <input id='nome-contato' type='text' required>
             </div>
-            
             <div class='form-group'>
-              <label for='idade'>Idade *</label>
-              <input id='idade' type='number' min='12' max='120' required>
+              <label for='email-contato'>E-mail</label>
+              <input id='email-contato' type='email' required>
             </div>
-            
-            <div class='form-group'>
-              <label for='email'>E-mail *</label>
-              <input id='email' type='email' required>
-            </div>
-            
             <div class='form-group'>
               <label for='telefone'>Telefone</label>
               <input id='telefone' type='tel' placeholder='(11) 99999-9999'>
             </div>
-            
-            <!-- Separador -->
+            <div class='form-group'>
+              <label for='assunto'>Assunto</label>
+              <select id='assunto' required>
+                <option value=''>Selecione o assunto</option>
+                <option value='duvida'>Dúvida sobre o serviço</option>
+                <option value='sugestao'>Sugestão de melhoria</option>
+                <option value='problema'>Problema técnico</option>
+                <option value='parceria'>Proposta de parceria</option>
+                <option value='outro'>Outro</option>
+              </select>
+            </div>
             <div class='form-group' style='grid-column:1 / -1'>
-              <hr style='border: none; border-top: 2px solid rgba(90,30,166,0.1); margin: 20px 0;'>
-              <h3 style='color: var(--accent); font-family: "Cormorant Garamond", serif; margin-bottom: 16px;'>Endereço</h3>
-            </div>
-            
-            <!-- Busca por CEP -->
-            <div class='form-group'>
-              <label for='cep'>CEP *</label>
-              <div class="cep-container">
-                <input id='cep' type='text' maxlength='9' placeholder='00000-000' required>
-                <button type="button" id="buscar-cep" class="cep-button">Buscar CEP</button>
-              </div>
-              <small style='color:var(--muted); font-size: 0.85rem;'>Digite o CEP e clique em Buscar para preencher automaticamente</small>
-            </div>
-            
-            <div class='form-group'>
-              <label for='logradouro'>Logradouro *</label>
-              <input id='logradouro' type='text' required>
-            </div>
-            
-            <div class='form-group'>
-              <label for='numero'>Número *</label>
-              <input id='numero' type='text' required>
-            </div>
-            
-            <div class='form-group'>
-              <label for='complemento'>Complemento</label>
-              <input id='complemento' type='text' placeholder='Apto, Bloco, Casa...'>
-            </div>
-            
-            <div class='form-group'>
-              <label for='bairro'>Bairro *</label>
-              <input id='bairro' type='text' required>
-            </div>
-            
-            <div class='form-group'>
-              <label for='cidade'>Cidade *</label>
-              <input id='cidade' type='text' required>
-            </div>
-            
-            <div class='form-group'>
-              <label for='estado'>Estado *</label>
-              <input id='estado' type='text' required readonly style='background-color: rgba(90,30,166,0.05);'>
+              <label for='mensagem'>Mensagem</label>
+              <textarea id='mensagem' rows='5' placeholder='Conte-nos como podemos ajudar você...' required></textarea>
             </div>
           </div>
-          
           <div class='btn-center'>
-            <button type='submit' class='primary'>Salvar informações</button>
+            <button type='submit' class='primary'>Enviar Mensagem</button>
           </div>
         </form>
       </div>
@@ -112,5 +92,46 @@
       <p>© 2025 Os Gatos Indicam - Todos os direitos reservados</p>
     </footer>
   </div>
+
+  <script>
+    // Script específico para a página de contato
+    document.addEventListener('DOMContentLoaded', function() {
+      const formContato = document.getElementById('form-contato');
+      
+      if (formContato) {
+        formContato.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Coletar dados do formulário
+          const nome = document.getElementById('nome-contato').value;
+          const email = document.getElementById('email-contato').value;
+          const assunto = document.getElementById('assunto').value;
+          const mensagem = document.getElementById('mensagem').value;
+          
+          // Validação simples
+          if (!nome || !email || !assunto || !mensagem) {
+            showAlert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+          }
+          
+          // Simular envio do formulário
+          showAlert('Mensagem enviada com sucesso! Nossos gatos entrarão em contato em breve.');
+          formContato.reset();
+        });
+      }
+      
+      // Função para mostrar alertas (reutilizada do script principal)
+      function showAlert(msg) { 
+        const a = document.createElement('div'); 
+        a.className = 'alert'; 
+        a.textContent = msg; 
+        document.body.appendChild(a); 
+        setTimeout(() => a.remove(), 4500); 
+      }
+    });
+  </script>
 </body>
 </html>
+</body>
+</html>
+
