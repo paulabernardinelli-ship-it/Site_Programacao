@@ -1,16 +1,138 @@
-//Selene - Busca de livros 
-document.addEventListener('DOMContentLoaded', function(){
-  const form = document.getElementById('form-preferencias');
-  const rec = document.getElementById('recomendacoes');
-  const placeholder = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2MDAnIGhlaWdodD0nOTAwJyB2aWV3Qm94PScwIDAgNjAwIDkwMCc+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsbD0nI2ZmZjdmYicvPjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDMwMCwzMDApIHNjYWxlKDEuNikgdHJhbnNsYXRlKC02MCwtOTApJyBmaWxsPScjNWExZWE2Jz48cGF0aCBkPSdNMTAgMTEwIEMzMCAzMCwgMTMwIDMwLCAxNTAgMTEwIEMxNzAgMTkwLCAxMzAgMjMwLCA5MCAyMzAgQzUwIDIzMCwgMTAgMTkwLCAxMCAxMTAgWicvPjxjaXJjbGUgY3g9JzYwJyBjeT0nNzAnIHI9JzYnIGZpbGw9JyNmZmYnLz48Y2lyY2xlIGN4PScxMDAnIGN5PSc3MCcgcj0nNicgZmlsbD0nI2ZmZicvPjwvZz48dGV4dCB4PSczMDAnIHk9Jzg2MCcgZm9udC1mYW1pbHk9J051bml0bywgQXJpYWwnIGZvbnQtc2l6ZT0nMjAnIGZpbGw9JyM2YjZiNmInIHRleHQtYW5jaG9yPSdtaWRkbGUnPlNlbGVuZSBwbGFjZWhvbGRlcjwvdGV4dD48L3N2Zz4=";
+// Selene Premium - Script para Cadastro com ViaCEP
+document.addEventListener('DOMContentLoaded', function() {
+  const formCadastro = document.getElementById('form-cadastro');
+  const cepInput = document.getElementById('cep');
+  const buscarCepBtn = document.getElementById('buscar-cep');
   
-  // Função para exibir loader
-  function showLoader(msg){ 
-    rec.innerHTML = '<div class="loader">' + (msg || 'Selene está procurando livros...') + '</div>'; 
+  // Máscara para o CEP
+  cepInput.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 5) {
+      value = value.substring(0, 5) + '-' + value.substring(5, 8);
+    }
+    e.target.value = value;
+  });
+  
+  // Buscar endereço por CEP usando ViaCEP
+  buscarCepBtn.addEventListener('click', buscarEnderecoPorCEP);
+  cepInput.addEventListener('blur', function() {
+    if (this.value.length === 9) {
+      buscarEnderecoPorCEP();
+    }
+  });
+  
+  async function buscarEnderecoPorCEP() {
+    const cep = cepInput.value.replace(/\D/g, '');
+    
+    if (cep.length !== 8) {
+      showAlert('CEP inválido. Digite um CEP com 8 dígitos.');
+      return;
+    }
+    
+    // Mostrar loading
+    buscarCepBtn.innerHTML = '<span class="loading-spinner"></span> Buscando...';
+    buscarCepBtn.disabled = true;
+    buscarCepBtn.classList.add('loading');
+    
+    try {
+      // Usando ViaCEP - API gratuita e confiável
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      
+      if (!response.ok) {
+        throw new Error('Erro na rede');
+      }
+      
+      const data = await response.json();
+      
+      if (data.erro) {
+        showAlert('CEP não encontrado. Verifique o número digitado.');
+        return;
+      }
+      
+      // Preencher os campos com os dados retornados pelo ViaCEP
+      document.getElementById('logradouro').value = data.logradouro || '';
+      document.getElementById('bairro').value = data.bairro || '';
+      document.getElementById('cidade').value = data.localidade || '';
+      document.getElementById('estado').value = data.uf || '';
+      document.getElementById('complemento').value = data.complemento || '';
+      
+      // Adicionar classe de feedback visual para campos preenchidos
+      const camposPreenchidos = ['logradouro', 'bairro', 'cidade', 'estado'];
+      camposPreenchidos.forEach(campo => {
+        const element = document.getElementById(campo);
+        element.classList.add('auto-filled');
+        setTimeout(() => element.classList.remove('auto-filled'), 2000);
+      });
+      
+      // Focar no campo número após preencher o endereço
+      document.getElementById('numero').focus();
+      
+      showAlert('Endereço encontrado com sucesso! Agora preencha o número.');
+      
+    } catch (error) {
+      console.error('Erro ao buscar CEP:', error);
+      showAlert('Erro ao buscar endereço. Verifique sua conexão ou tente novamente.');
+    } finally {
+      // Restaurar botão
+      buscarCepBtn.innerHTML = 'Buscar CEP';
+      buscarCepBtn.disabled = false;
+      buscarCepBtn.classList.remove('loading');
+    }
   }
   
-  // Função para exibir alertas
-  function showAlert(msg){ 
+  // Validação do formulário de cadastro
+  if (formCadastro) {
+    formCadastro.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Coletar dados do formulário
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const idade = document.getElementById('idade').value;
+      const cep = document.getElementById('cep').value;
+      const logradouro = document.getElementById('logradouro').value;
+      const numero = document.getElementById('numero').value;
+      
+      // Validação dos campos obrigatórios
+      if (!nome || !email || !idade || !cep || !logradouro || !numero) {
+        showAlert('Por favor, preencha todos os campos obrigatórios (*).');
+        return;
+      }
+      
+      // Validação de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showAlert('Por favor, digite um e-mail válido.');
+        return;
+      }
+      
+      // Simular envio do formulário com loading
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span class="loading-spinner"></span> Salvando...';
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        showAlert('🎉 Cadastro realizado com sucesso! Agora configure suas preferências literárias.');
+        
+        // Restaurar botão
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        // Redirecionar para página de preferências após 2 segundos
+        setTimeout(() => {
+          window.location.href = 'produtos.html';
+        }, 2000);
+      }, 1500);
+    });
+  }
+  
+  // Função para mostrar alertas
+  function showAlert(msg) { 
+    // Remover alertas anteriores
+    const alertasAnteriores = document.querySelectorAll('.alert');
+    alertasAnteriores.forEach(alerta => alerta.remove());
+    
     const a = document.createElement('div'); 
     a.className = 'alert'; 
     a.textContent = msg; 
@@ -18,201 +140,33 @@ document.addEventListener('DOMContentLoaded', function(){
     setTimeout(() => a.remove(), 4500); 
   }
   
-  // Função para mostrar/ocultar loading no botão
-  function toggleButtonLoading(show) {
-    const button = document.querySelector('.primary');
-    const buttonText = button.querySelector('.button-text');
-    const buttonLoading = button.querySelector('.button-loading');
+  // Validação de email em tempo real
+  const emailInput = document.getElementById('email');
+  emailInput.addEventListener('blur', function() {
+    const email = this.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    if (show) {
-      buttonText.style.display = 'none';
-      buttonLoading.style.display = 'inline';
-      button.disabled = true;
+    if (email && !emailRegex.test(email)) {
+      this.style.borderColor = '#e74c3c';
+      showAlert('Por favor, digite um e-mail válido.');
+    } else if (email) {
+      this.style.borderColor = '#27ae60';
     } else {
-      buttonText.style.display = 'inline';
-      buttonLoading.style.display = 'none';
-      button.disabled = false;
+      this.style.borderColor = '';
     }
-  }
-
-  if(!form) return;
+  });
   
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    
-    // Coletar dados do formulário
-    const genres = [...document.querySelectorAll('input[name="genero"]:checked')].map(i => i.value);
-    const authorsInput = document.getElementById('autores') ? document.getElementById('autores').value : '';
-    const authors = authorsInput.split(',').map(s => s.trim()).filter(Boolean);
-    const periodo = document.querySelector('input[name="periodo"]:checked').value;
-    
-    // Determinar anos baseado no período selecionado
-    let anosBusca = '';
-    switch(periodo) {
-      case 'recentes':
-        anosBusca = '2023|2024|2025';
-        break;
-      case 'modernos':
-        anosBusca = '2020|2021|2022|2023|2024|2025';
-        break;
-      default:
-        anosBusca = '2020|2021|2022|2023|2024|2025';
-    }
-    
-    // Validação
-    if(genres.length === 0){ 
-      showAlert('Selecione ao menos um gênero para buscar recomendações.'); 
-      return; 
-    }
-    
-    // Exibir loader
-    showLoader('Selene está buscando os melhores livros para você...');
-    toggleButtonLoading(true);
-    
-    // Limpar recomendações anteriores
-    rec.innerHTML = '';
-    const grid = document.createElement('div'); 
-    grid.className = 'recs'; 
-    rec.appendChild(grid);
-    
-    try {
-      let total = 0;
-      const queries = [];
-      const livrosUnicos = new Set(); // Para evitar duplicatas
-      
-      // Construir queries de busca combinando autores e gêneros
-      if(authors.length > 0) {
-        authors.forEach(author => {
-          queries.push({
-            term: author,
-            type: 'author'
-          });
-        });
-      }
-      
-      genres.forEach(genre => {
-        queries.push({
-          term: genre,
-          type: 'genre'
-        });
-      });
-      
-      // Buscar livros para cada query
-      for(const query of queries){
-        if(total >= 16) break; // Limite aumentado para mais resultados
-        
-        let searchTerm = '';
-        if (query.type === 'author') {
-          searchTerm = `inauthor:"${query.term}"`;
-        } else {
-          searchTerm = `subject:${query.term}`;
-        }
-        
-        // Adicionar filtro de anos e best-sellers
-        const q = encodeURIComponent(`${searchTerm} ${anosBusca} bestseller`);
-        const url = `https://www.googleapis.com/books/v1/volumes?q=${q}&printType=books&orderBy=relevance&maxResults=12&langRestrict=pt`;
-        
-        try {
-          const r = await fetch(url);
-          const data = await r.json();
-          
-          if(data && data.items){
-            for(const it of data.items){
-              if(total >= 16) break;
-              
-              const info = it.volumeInfo || {};
-              const pd = info.publishedDate || '';
-              const yearMatch = pd.match(/\d{4}/);
-              const year = yearMatch ? parseInt(yearMatch[0]) : 0;
-              
-              // Filtrar por período selecionado
-              if (periodo === 'recentes' && year < 2023) continue;
-              if (periodo === 'modernos' && year < 2020) continue;
-              
-              const title = info.title || 'Título indisponível';
-              const bookId = it.id;
-              
-              // Evitar duplicatas
-              if (livrosUnicos.has(bookId)) continue;
-              livrosUnicos.add(bookId);
-              
-              const authorsList = (info.authors || []).join(', ') || 'Autor desconhecido';
-              const thumb = (info.imageLinks && (info.imageLinks.thumbnail || info.imageLinks.smallThumbnail)) || '';
-              const preview = info.previewLink || info.infoLink || '#';
-              const description = info.description ? 
-                (info.description.length > 150 ? info.description.slice(0, 150) + '...' : info.description) : 
-                'Descrição não disponível.';
-              
-              const rating = info.averageRating || 'Não avaliado';
-              const pageCount = info.pageCount ? `${info.pageCount} páginas` : '';
-              
-              // Criar card do livro
-              const card = document.createElement('div'); 
-              card.className = 'book-card';
-              
-              const cover = document.createElement('div'); 
-              cover.className = 'book-cover';
-              cover.style.backgroundImage = "url('" + (thumb || placeholder) + "')";
-              
-              const infoDiv = document.createElement('div'); 
-              infoDiv.className = 'book-info';
-              infoDiv.innerHTML = `
-                <h4>${title}</h4>
-                <p class="book-authors"><strong>${authorsList}</strong></p>
-                <p class="book-meta">
-                  ${year ? `<span>${year}</span>` : ''}
-                  ${rating !== 'Não avaliado' ? `<span>⭐ ${rating}/5</span>` : ''}
-                  ${pageCount ? `<span>${pageCount}</span>` : ''}
-                </p>
-                <p class="book-description">${description}</p>
-                <div class="book-actions">
-                  <a href="${preview}" target="_blank" rel="noopener">Ver no Google Books</a>
-                </div>
-              `;
-              
-              card.appendChild(cover); 
-              card.appendChild(infoDiv); 
-              grid.appendChild(card);
-              
-              total++;
-            } 
-          }
-        } catch (fetchError) {
-          console.error(`Erro na busca por ${query.term}:`, fetchError);
-        }
-      }
-      
-      // Mensagens baseadas nos resultados
-      if (total === 0) {
-        grid.innerHTML = `
-          <div class="no-results">
-            <h3>Nenhum livro encontrado</h3>
-            <p>Tente ajustar seus filtros ou selecionar mais gêneros. Selene pode estar com dificuldade em encontrar livros recentes para suas preferências específicas.</p>
-            <button onclick="location.reload()" class="primary" style="margin-top: 12px;">Tentar Novamente</button>
-          </div>
-        `;
-      } else {
-        // Adicionar cabeçalho com resultados
-        const resultsHeader = document.createElement('div');
-        resultsHeader.className = 'results-header';
-        resultsHeader.innerHTML = `
-          <h3>🎉 Selene encontrou ${total} livros para você!</h3>
-          <p>Baseado nas suas preferências de ${genres.join(', ')}${authors.length > 0 ? ` e autores como ${authors.slice(0, 2).join(', ')}` : ''}</p>
-        `;
-        grid.insertBefore(resultsHeader, grid.firstChild);
-      }
-      
-    } catch(err) { 
-      console.error('Erro geral:', err); 
-      grid.innerHTML = `
-        <div class="error-message">
-          <h3>Ops! Algo deu errado</h3>
-          <p>Erro ao buscar no Google Books. Verifique sua conexão ou tente novamente mais tarde.</p>
-          <button onclick="location.reload()" class="primary" style="margin-top: 12px;">Tentar Novamente</button>
-        </div>
-      `;
-    } finally {
-      toggleButtonLoading(false);
+  // Validação de idade
+  const idadeInput = document.getElementById('idade');
+  idadeInput.addEventListener('blur', function() {
+    const idade = parseInt(this.value);
+    if (idade < 12 || idade > 120) {
+      this.style.borderColor = '#e74c3c';
+      showAlert('A idade deve ser entre 12 e 120 anos.');
+    } else if (this.value) {
+      this.style.borderColor = '#27ae60';
+    } else {
+      this.style.borderColor = '';
     }
   });
 });
