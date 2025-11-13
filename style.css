@@ -1,16 +1,19 @@
+/* Os Gatos Indicam */
 :root {
-  --accent: #5a1ea6;
-  --accent-dark: #3f1575;
-  --accent-2: #f4c542;
-  --accent-2-dark: #d4a52a;
-  --pink: #f7c7db;
-  --blue: #9dc9f0;
-  --bg: #fdfcff;
-  --text: #1a0a28;
-  --text-light: #2d1a40;
-  --muted: #4a3a5a;
-  --shadow: 0 18px 40px rgba(26,10,40,0.12);
-  --shadow-light: 0 8px 24px rgba(26,10,40,0.08);
+  --accent: #8B4513;          /* Marrom saddle - elegante */
+  --accent-dark: #654321;     /* Marrom escuro */
+  --accent-2: #FFD700;        /* Dourado vibrante */
+  --accent-2-dark: #DAA520;   /* Dourado goldenrod */
+  --pink: #F8C8DC;            /* Rosa suave */
+  --blue: #A7C7E7;            /* Azul claro suave */
+  --bg: #FFF8F0;              /* Branco amarelado - cor principal */
+  --bg-secondary: #F5F5DC;    /* Bege claro - para cards */
+  --bg-tertiary: #FAF3E0;     /* Bege muito claro - para hover */
+  --text: #2F1B0C;            /* Marrom chocolate - texto principal */
+  --text-light: #5D4037;      /* Marrom mais claro */
+  --muted: #8D6E63;           /* Marrom acinzentado */
+  --shadow: 0 18px 40px rgba(43, 27, 12, 0.1);
+  --shadow-light: 0 8px 24px rgba(43, 27, 12, 0.08);
   --success: #27ae60;
   --error: #e74c3c;
 }
@@ -23,14 +26,17 @@
 
 body {
   font-family: 'Nunito', system-ui, -apple-system, Arial;
-  background: linear-gradient(180deg, #fff7ff, #fbfbff);
+  background: 
+    #FFF8F0 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect width="200" height="200" fill="%23FFF8F0"/><g fill="%23F5F5DC" opacity="0.3"><path d="M50,30 Q55,25 60,30 T70,30 Q75,35 70,40 T60,40 Q55,45 50,40 T40,40 Q35,35 40,30 T50,30 Z"/><path d="M120,80 Q125,75 130,80 T140,80 Q145,85 140,90 T130,90 Q125,95 120,90 T110,90 Q105,85 110,80 T120,80 Z"/><path d="M80,140 Q85,135 90,140 T100,140 Q105,145 100,150 T90,150 Q85,155 80,150 T70,150 Q65,145 70,140 T80,140 Z"/><path d="M150,120 Q155,115 160,120 T170,120 Q175,125 170,130 T160,130 Q155,135 150,130 T140,130 Q135,125 140,120 T150,120 Z"/><path d="M30,100 Q35,95 40,100 T50,100 Q55,105 50,110 T40,110 Q35,115 30,110 T20,110 Q15,105 20,100 T30,100 Z"/></g></svg>');
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   padding-top: 70px;
   line-height: 1.6;
+  min-height: 100vh;
 }
 
-/* Menu fixo - presente em todas as páginas */
+/* Menu fixo */
 .fixed-nav {
   position: fixed;
   top: 0;
@@ -77,15 +83,15 @@ body {
   transform: translateY(-2px);
 }
 
-/* Cabeçalho com imagem temática roxo-dourada */
+/* Cabeçalho com imagem temática */
 .header-bg {
   background-image: 
-    linear-gradient(135deg, rgba(90, 30, 166, 0.85), rgba(155, 89, 182, 0.8)),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%235a1ea6"/><path d="M30,20 L40,35 L55,30 L45,45 L60,50 L45,55 L55,70 L40,65 L30,80 L25,65 L10,70 L20,55 L5,50 L20,45 L10,30 L25,35 Z" fill="%23f4c542"/><circle cx="70" cy="25" r="5" fill="%23f4c542"/><circle cx="80" cy="70" r="4" fill="%23f4c542"/><circle cx="20" cy="15" r="3" fill="%23f4c542"/></svg>');
+    linear-gradient(135deg, rgba(139, 69, 19, 0.85), rgba(101, 67, 33, 0.8)),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%238B4513"/><path d="M30,20 L40,35 L55,30 L45,45 L60,50 L45,55 L55,70 L40,65 L30,80 L25,65 L10,70 L20,55 L5,50 L20,45 L10,30 L25,35 Z" fill="%23FFD700"/><circle cx="70" cy="25" r="5" fill="%23FFD700"/><circle cx="80" cy="70" r="4" fill="%23FFD700"/><circle cx="20" cy="15" r="3" fill="%23FFD700"/></svg>');
   background-size: cover, 200px;
   background-position: center, center;
   padding: 36px 0;
-  border-bottom: 1px solid rgba(90,30,166,0.1);
+  border-bottom: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .container {
@@ -145,7 +151,7 @@ header {
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(244, 197, 66, 0.3);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.3);
 }
 
 .cards {
@@ -156,11 +162,17 @@ header {
 
 .card {
   flex: 1;
-  background: linear-gradient(180deg, #ffffff, #fff7fb);
+  background: linear-gradient(180deg, var(--bg-secondary), var(--bg-tertiary));
   padding: 18px;
   border-radius: 14px;
-  border: 1px solid rgba(90,30,166,0.1);
+  border: 1px solid rgba(139, 69, 19, 0.1);
   box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(139, 69, 19, 0.15);
 }
 
 .card h3 {
@@ -175,10 +187,10 @@ header {
 }
 
 .pref-card {
-  background: linear-gradient(180deg, #fff, #fff9fc);
+  background: linear-gradient(180deg, var(--bg), var(--bg-secondary));
   padding: 26px;
   border-radius: 16px;
-  border: 1px solid rgba(90,30,166,0.1);
+  border: 1px solid rgba(139, 69, 19, 0.1);
   box-shadow: var(--shadow);
   max-width: 1100px;
   margin: 18px auto;
@@ -211,8 +223,8 @@ label {
 input, select, textarea {
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid rgba(26,10,40,0.15);
-  background: white;
+  border: 1px solid rgba(139, 69, 19, 0.15);
+  background: var(--bg);
   outline: none;
   color: var(--text);
   font-family: 'Nunito', sans-serif;
@@ -220,7 +232,7 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-  box-shadow: 0 6px 24px rgba(90,30,166,0.15);
+  box-shadow: 0 6px 24px rgba(139, 69, 19, 0.15);
   border-color: var(--accent);
   transform: translateY(-2px);
 }
@@ -234,15 +246,15 @@ input:focus, select:focus, textarea:focus {
 .chip {
   padding: 10px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(90,30,166,0.15);
-  background: linear-gradient(90deg, #fff, #fff7fb);
+  border: 1px solid rgba(139, 69, 19, 0.15);
+  background: linear-gradient(90deg, var(--bg), var(--bg-secondary));
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .chip:hover {
   border-color: var(--accent);
-  background: rgba(90,30,166,0.05);
+  background: rgba(139, 69, 19, 0.05);
   transform: translateY(-2px);
 }
 
@@ -259,14 +271,14 @@ button.primary {
   border: none;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(90,30,166,0.2);
+  box-shadow: 0 12px 30px rgba(139, 69, 19, 0.2);
   transition: all 0.3s ease;
   font-family: 'Nunito', sans-serif;
 }
 
 button.primary:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(90,30,166,0.3);
+  box-shadow: 0 15px 35px rgba(139, 69, 19, 0.3);
 }
 
 button.primary:disabled {
@@ -283,21 +295,20 @@ button.primary:disabled {
 }
 
 .book-card {
-  background: linear-gradient(180deg, #fff, #fff8fb);
+  background: linear-gradient(180deg, var(--bg), var(--bg-secondary));
   padding: 12px;
   border-radius: 14px;
-  border: 1px solid rgba(90,30,166,0.1);
+  border: 1px solid rgba(139, 69, 19, 0.1);
   box-shadow: var(--shadow-light);
   display: flex;
   flex-direction: column;
-  height: 360px;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .book-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(90,30,166,0.15);
+  box-shadow: 0 12px 30px rgba(139, 69, 19, 0.15);
 }
 
 .book-cover {
@@ -346,8 +357,9 @@ button.primary:disabled {
 
 footer {
   padding: 28px 0;
-  background: linear-gradient(90deg, rgba(90,30,166,0.08), rgba(244,197,66,0.06));
+  background: linear-gradient(90deg, rgba(139, 69, 19, 0.08), rgba(255, 215, 0, 0.06));
   margin-top: 30px;
+  border-top: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 footer p {
@@ -355,96 +367,60 @@ footer p {
   color: var(--muted);
 }
 
-/* ===== ESTILOS ESPECÍFICOS PARA PÁGINA SOBRE ===== */
-.about-content {
+/* ===== ESTILOS PARA INDICAÇÕES MANUAIS ===== */
+.livro-completo {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.about-section {
-  padding: 20px;
-  background: linear-gradient(180deg, #f8f5ff, #fff);
-  border-radius: 12px;
-  border-left: 4px solid var(--accent);
-}
-
-.about-section h3 {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--accent);
-  margin-bottom: 12px;
-  font-size: 1.4rem;
-}
-
-.about-section p {
-  color: var(--text-light);
-  line-height: 1.6;
-}
-
-.about-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
-  margin-top: 20px;
 }
 
-.feature-item {
+.book-card-inner {
+  background: linear-gradient(180deg, var(--bg), var(--bg-secondary));
   padding: 16px;
-  background: rgba(90, 30, 166, 0.05);
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  border-radius: 14px;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  box-shadow: var(--shadow-light);
 }
 
-.feature-item:hover {
-  transform: translateY(-5px);
-}
-
-.feature-item h4 {
-  color: var(--accent);
-  margin-bottom: 8px;
-  font-size: 1.1rem;
-}
-
-.feature-item p {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-/* ===== ESTILOS ESPECÍFICOS PARA PÁGINA CONTATO ===== */
-.contact-info {
-  margin-bottom: 30px;
+.gatos-indication {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(139, 69, 19, 0.05));
   padding: 20px;
-  background: linear-gradient(180deg, #f8f5ff, #fff);
-  border-radius: 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
 }
 
-.contact-methods {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.gatos-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
 }
 
-.contact-method {
-  text-align: center;
-  padding: 16px;
+.gatos-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-2);
+  flex-shrink: 0;
+  object-fit: cover;
 }
 
-.contact-method h4 {
+.gatos-text h4 {
   color: var(--accent);
   margin-bottom: 8px;
-  font-size: 1.1rem;
+  font-family: 'Cormorant Garamond', serif;
 }
 
-.contact-method p {
+.gatos-text p {
   color: var(--text-light);
-  margin-bottom: 4px;
-  font-weight: 600;
+  line-height: 1.5;
+  font-style: italic;
 }
 
-.contact-method small {
-  color: var(--muted);
-  font-size: 0.8rem;
+.book-cover img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 /* ===== ESTILOS ESPECÍFICOS PARA PÁGINA PRODUTOS ===== */
@@ -452,9 +428,10 @@ footer p {
   grid-column: 1 / -1;
   text-align: center;
   padding: 20px;
-  background: linear-gradient(135deg, rgba(90, 30, 166, 0.05), rgba(244, 197, 66, 0.05));
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.05), rgba(255, 215, 0, 0.05));
   border-radius: 12px;
   margin-bottom: 20px;
+  border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .results-header h3 {
@@ -481,7 +458,7 @@ footer p {
 }
 
 .book-meta span {
-  background: rgba(90, 30, 166, 0.1);
+  background: rgba(139, 69, 19, 0.1);
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -499,9 +476,9 @@ footer p {
   grid-column: 1 / -1;
   text-align: center;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #f8f5ff, #fff);
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg));
   border-radius: 12px;
-  border: 2px dashed rgba(90, 30, 166, 0.2);
+  border: 2px dashed rgba(139, 69, 19, 0.2);
 }
 
 .no-results h3, .error-message h3 {
@@ -542,7 +519,7 @@ footer p {
 
 .cep-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(244, 197, 66, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 .cep-button:disabled {
@@ -588,7 +565,7 @@ input:valid:not(:placeholder-shown) {
 
 /* Campo estado como readonly */
 #estado {
-  background-color: rgba(90, 30, 166, 0.05) !important;
+  background-color: rgba(139, 69, 19, 0.05) !important;
   cursor: not-allowed;
 }
 
@@ -653,7 +630,7 @@ small {
 /* Estilo para seções do formulário */
 .form-group hr {
   border: none;
-  border-top: 2px solid rgba(90, 30, 166, 0.1);
+  border-top: 2px solid rgba(139, 69, 19, 0.1);
   margin: 20px 0;
 }
 
@@ -666,7 +643,7 @@ small {
 
 /* Melhorias para formulários */
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a1ea6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238B4513' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
@@ -729,16 +706,13 @@ select {
     padding-top: 120px;
   }
   
-  .about-features {
-    grid-template-columns: 1fr;
+  .gatos-header {
+    flex-direction: column;
+    text-align: center;
   }
   
-  .contact-methods {
-    grid-template-columns: 1fr;
-  }
-  
-  .about-section {
-    padding: 16px;
+  .gatos-photo {
+    align-self: center;
   }
   
   .cep-container {
@@ -805,4 +779,38 @@ a:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Efeitos especiais para o tema felino */
+.cat-paw-decoration {
+  position: relative;
+}
+
+.cat-paw-decoration::before {
+  content: '🐾';
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.3;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+}
+
+/* Hover especial para elementos interativos */
+.card:hover::before {
+  content: '🐱';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
