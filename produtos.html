@@ -3,15 +3,16 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <title>Preferências — Selene</title>
+  <title>Preferências — Os Gatos Indicam</title>
   <link href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito:wght@300;400;700&display=swap' rel='stylesheet'>
   <link rel='stylesheet' href='style.css'>
+  <script src='script-manual.js' defer></script>
 </head>
 <body>
   <!-- Menu fixo em todas as páginas -->
   <nav class="fixed-nav">
     <div class="nav-container">
-      <div class='logo'><h1>A Gata Selene</h1></div>
+      <div class='logo'><h1>Os Gatos Indicam</h1></div>
       <ul>
         <li><a href='index.html'>Início</a></li>
         <li><a href='cadastro.html'>Cadastro</a></li>
@@ -24,67 +25,51 @@
 
   <div class='container'>
     <header>
-      <div class='logo'><h1>A Gata Selene</h1></div>
+      <div class='logo'><h1>Os Gatos Indicam</h1></div>
     </header>
     <main>
       <div class='pref-card'>
         <h2>Suas Preferências Literárias</h2>
-        <p style='color:var(--muted); margin-bottom: 24px;'>Escolha gêneros, autores e hábitos — Selene buscará lançamentos recentes e best-sellers dos últimos anos.</p>
+        <p style='color:var(--muted); margin-bottom: 24px;'>Configure suas preferências para que nossos gatos possam indicar os livros perfeitos para você.</p>
         
         <form id='form-preferencias'>
           <div class='form-grid'>
-            <div class='form-group'>
-              <label>Gêneros Favoritos *</label>
+            <!-- Gêneros Principais -->
+            <div class='form-group' style='grid-column:1 / -1'>
+              <label>Gêneros que você gosta *</label>
               <div class='chips'>
                 <label class='chip'>
                   <input type='checkbox' name='genero' value='romance'> 
                   Romance
                 </label>
                 <label class='chip'>
+                  <input type='checkbox' name='genero' value='ficcao'> 
+                  Ficção
+                </label>
+                <label class='chip'>
+                  <input type='checkbox' name='genero' value='nao-ficcao'> 
+                  Não-Ficção
+                </label>
+                <label class='chip'>
+                  <input type='checkbox' name='genero' value='terror'> 
+                  Terror/Suspense
+                </label>
+                <label class='chip'>
                   <input type='checkbox' name='genero' value='fantasia'> 
                   Fantasia
                 </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='ficcao'> 
-                  Ficção Científica
-                </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='misterio'> 
-                  Mistério
-                </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='suspense'> 
-                  Suspense
-                </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='biografia'> 
-                  Biografia
-                </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='autoajuda'> 
-                  Autoajuda
-                </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='thriller'> 
-                  Thriller
-                </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='young adult'> 
-                  Young Adult
-                </label>
-                <label class='chip'>
-                  <input type='checkbox' name='genero' value='distopia'> 
-                  Distopia
-                </label>
               </div>
+              <small style='color:var(--muted); font-size: 0.85rem;'>Selecione ao menos um gênero</small>
             </div>
             
-            <div class='form-group'>
-              <label for='autores'>Autores Favoritos</label>
-              <input id='autores' type='text' placeholder='Ex.: Colleen Hoover, Brandon Sanderson, George R.R. Martin'>
+            <!-- Autor Favorito -->
+            <div class='form-group' style='grid-column:1 / -1'>
+              <label for='autores'>Autores favoritos</label>
+              <input id='autores' type='text' placeholder='Digite os nomes dos seus autores favoritos'>
               <small style='color:var(--muted); font-size: 0.85rem;'>Separe os nomes por vírgula</small>
             </div>
-            
+
+            <!-- Hábitos de Leitura -->
             <div class='form-group'>
               <label for='frequencia'>Frequência de Leitura *</label>
               <select id='frequencia' required>
@@ -106,17 +91,48 @@
                 <option value='madrugada'>Madrugada</option>
               </select>
             </div>
+
+            <div class='form-group'>
+              <label for='livros-mes'>Livros por mês</label>
+              <select id='livros-mes'>
+                <option value=''>Selecione</option>
+                <option value='1-2'>1-2 livros</option>
+                <option value='3-4'>3-4 livros</option>
+                <option value='5+'>5+ livros</option>
+                <option value='varia'>Varia muito</option>
+              </select>
+            </div>
+
+            <!-- Formato Preferido -->
+            <div class='form-group' style='grid-column:1 / -1'>
+              <label>Formato preferido</label>
+              <div class='chips'>
+                <label class='chip'>
+                  <input type='checkbox' name='formato' value='fisico'> 
+                  📚 Físico
+                </label>
+                <label class='chip'>
+                  <input type='checkbox' name='formato' value='digital'> 
+                  📱 Digital
+                </label>
+                <label class='chip'>
+                  <input type='checkbox' name='formato' value='audio'> 
+                  🎧 Audiolivro
+                </label>
+              </div>
+              <small style='color:var(--muted); font-size: 0.85rem;'>Selecione os formatos que você prefere</small>
+            </div>
             
             <div class='form-group' style='grid-column:1 / -1'>
               <label for='descricao'>O que te envolve numa história?</label>
-              <textarea id='descricao' placeholder='Conte para a Selene o que faz você se apaixonar por um livro... (personagens complexos, reviravoltas, mundos imaginários, etc.)' rows='4'></textarea>
+              <textarea id='descricao' placeholder='Conte para nossos gatos o que faz você se apaixonar por um livro... (personagens complexos, reviravoltas, mundos imaginários, romance, etc.)' rows='4'></textarea>
             </div>
           </div>
           
           <div class='btn-center'>
             <button type='submit' class='primary'>
-              <span class="button-text">Descobrir meus livros com Selene</span>
-              <span class="button-loading" style="display: none;">Buscando livros...</span>
+              <span class="button-text">Ver indicações dos Gatos</span>
+              <span class="button-loading" style="display: none;">Preparando indicações...</span>
             </button>
           </div>
         </form>
@@ -125,10 +141,8 @@
       </div>
     </main>
     <footer>
-      <p>© 2025 A Gata Selene Indica Livro</p>
+      <p>© 2025 Os Gatos Indicam - Todos os direitos reservados</p>
     </footer>
   </div>
-  
-  <script src='script.js'></script>
 </body>
 </html>
