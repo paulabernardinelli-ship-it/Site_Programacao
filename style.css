@@ -371,7 +371,7 @@ footer p {
 .livro-completo {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .book-card-inner {
@@ -814,3 +814,52 @@ a:focus-visible {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.2); }
 }
+
+/* -------------------- ESTILOS PARA FEEDBACK E LOADING (JS) -------------------- */
+
+/* Alerta Customizado (pop-up discreto no canto inferior) */
+.alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent); /* Use a cor de destaque do seu tema */
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeInOut 4s forwards; /* Animação para aparecer e sumir */
+ 
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
+}
+
+/* Spinner Simples (para o botão de Busca/Salvar) */
+.loading-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Feedback visual para campos preenchidos pelo CEP */
+.auto-filled {
+    transition: background-color 0.5s ease-out;
+    background-color: #e6ffe6 !important; /* Verde claro para indicar sucesso de preenchimento */
+}
+
+

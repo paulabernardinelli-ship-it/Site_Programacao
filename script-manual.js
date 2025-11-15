@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         titulo: "É Assim que Acaba",
         autor: "Colleen Hoover",
-        capa: "imagens/livros/romance1.jpg",
+        capa: "img/É-Assim-Que-Acaba.jpg",
         ano: 2022,
         paginas: 368,
         descricao: "Um romance emocionante sobre relacionamentos tóxicos e redenção.",
         indicacao: {
-          foto: "imagens/gatos/gato-romance.jpg",
+          foto: "img/Gato-Romance.jpg",
           texto: "Miau! Este livro me fez ronronar de emoção! Perfeito para quem gosta de histórias que mexem com o coração. A evolução da personagem principal é simplesmente incrível! 🐱❤️"
         }
       }
@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         titulo: "A Vida Invisível de Addie Larue",
         autor: "V.E. Schwab",
-        capa: "imagens/livros/ficcao1.jpg",
+        capa: "img/A-Vida-Invisível-de-Addie-Larue.jpg",
         ano: 2020,
         paginas: 448,
         descricao: "Uma mulher faz um pacto para viver para sempre, mas é esquecida por todos que conhece.",
         indicacao: {
-          foto: "imagens/gatos/gato-ficcao.jpg",
+          foto: "img/Gato-Ficção.jpg",
           texto: "Miau! Esta história me fez pensar sobre o que realmente importa na vida. Perfeito para quem gosta de ficção com alma! 🐱📖"
         }
       }
@@ -75,12 +75,12 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         titulo: "Hábitos Atômicos",
         autor: "James Clear",
-        capa: "imagens/livros/naoficcao1.jpg",
+        capa: "img/Hábitos-Atômicos.jpg",
         ano: 2018,
         paginas: 320,
         descricao: "Um guia para construir bons hábitos e se livrar dos maus.",
         indicacao: {
-          foto: "imagens/gatos/gato-naoficcao.jpg",
+          foto: "img/Gato-Não-Ficção.jpg",
           texto: "Ronron! Este livro me ensinou a ter hábitos melhores - até minha rotina de sonecas melhorou! Ideal para quem quer crescer pessoalmente. 🐱🌟"
         }
       }
@@ -91,12 +91,12 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         titulo: "O Iluminado",
         autor: "Stephen King",
-        capa: "imagens/livros/terror1.jpg",
+        capa: "img/O-Iluminado.jpg",
         ano: 1977,
         paginas: 447,
         descricao: "Uma família se muda para um hotel isolado durante o inverno, onde forças sobrenaturais os assombram.",
         indicacao: {
-          foto: "imagens/gatos/gato-terror.jpg",
+          foto: "img/Gato-Terror.jpg",
           texto: "Miau! Este livro me fez pular do sofá! Perfeito para noites chuvosas - mas talvez você queira ler com as luzes acesas! 🐱👻"
         }
       }
@@ -107,12 +107,12 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         titulo: "O Nome do Vento",
         autor: "Patrick Rothfuss",
-        capa: "imagens/livros/fantasia1.jpg",
+        capa: "img/O-Nome-do-Vento.jpg",
         ano: 2007,
         paginas: 662,
         descricao: "A história de Kvothe, um homem lendário contando sua própria história.",
         indicacao: {
-          foto: "imagens/gatos/gato-fantasia.jpg",
+          foto: "img/Gato-Fantasia.jpg",
           texto: "Miau! Um mundo de fantasia tão rico que até eu me imaginei caçando dragões! Perfeito para escapismo de qualidade. 🐱🐉"
         }
       }
@@ -239,8 +239,8 @@ document.addEventListener('DOMContentLoaded', function(){
             // Container principal do livro
             const livroContainer = document.createElement('div');
             livroContainer.className = 'livro-completo';
-            livroContainer.appendChild(coverCard);
             livroContainer.appendChild(gatosCard);
+            livroContainer.appendChild(coverCard);
             
             card.appendChild(livroContainer);
             grid.appendChild(card);
