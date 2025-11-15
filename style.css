@@ -2,7 +2,7 @@
 :root {
   --accent: #8B4513;          /* Marrom saddle - elegante */
   --accent-dark: #654321;     /* Marrom escuro */
-  --accent-2: #FFD700;        /* Dourado vibrante */
+  --accent-2: #A8C28A;        /* Verde-Musgo Suave */
   --accent-2-dark: #DAA520;   /* Dourado goldenrod */
   --pink: #F8C8DC;            /* Rosa suave */
   --blue: #A7C7E7;            /* Azul claro suave */
@@ -83,6 +83,7 @@ body {
   transform: translateY(-2px);
 }
 
+/* -------------------- CABEÇALHO (header) e Navegação (nav) -------------------- */
 /* Cabeçalho com imagem temática */
 .header-bg {
   background-image: 
@@ -136,6 +137,8 @@ header {
   font-size: 1.1rem;
   opacity: 0.9;
 }
+
+/* -------------------- BOTÃO CTA de Exemplo -------------------- */
 
 .cta-button {
   display: inline-block;
@@ -355,6 +358,7 @@ button.primary:disabled {
   color: var(--text);
 }
 
+/* -------------------- RODAPÉ (footer) -------------------- */
 footer {
   padding: 28px 0;
   background: linear-gradient(90deg, rgba(139, 69, 19, 0.08), rgba(255, 215, 0, 0.06));
@@ -862,4 +866,109 @@ a:focus-visible {
     background-color: #e6ffe6 !important; /* Verde claro para indicar sucesso de preenchimento */
 }
 
+/* -------------------- ESTILIZAÇÃO DA PÁGINA SOBRE -------------------- */
 
+/* Container Principal para centralizar e dar fundo branco ao conteúdo */
+.pref-card { 
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Configuração do layout para que as seções fiquem lado a lado */
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    gap: 25px; /* Espaço entre as caixas */
+    justify-content: center; /* Centraliza as caixas */
+    margin-top: 30px;
+    text-align: left;
+}
+
+/* ESTILO DO CARD (Aplicação da caixinha arredondada) */
+.about-section {
+    flex-basis: calc(33.333% - 25px); /* Tenta colocar 3 caixas por linha */
+    min-width: 250px; 
+    
+    background-color: #f7f7f7; /* Cor de fundo suave */
+    padding: 20px;
+    border-radius: 10px; /* Cantos Arredondados */
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra suave */
+    
+    /* Configuração de Texto */
+    text-align: justify;
+}
+
+.about-section h3 {
+    color: var(--accent); /* Cor principal do tema (Roxo) */
+    font-size: 1.4em;
+    border-bottom: 2px solid rgba(90, 30, 166, 0.2);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.about-section p {
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.about-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.feature-item {
+    flex-basis: calc(33.333% - 20px); /* Tenta colocar 3 itens por linha */
+    min-width: 150px;
+
+background-color: white; /* Fundo branco para destacar da área cinza */
+    padding: 20px; /* Aumenta o preenchimento interno */
+    border-radius: 10px; /* Cantos arredondados */
+    border: 1px solid #e0e0e0; /* Borda leve */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+
+/* -------------------- RESPONSIVIDADE PARA SEÇÕES PRINCIPAIS -------------------- */
+
+@media (max-width: 768px) {
+    .about-section {
+        flex-basis: 100%; /* Uma coluna em tablets e celulares */
+    }
+}
+
+/* -------------------- ESTILO PARA A CAIXA FINAL CTA (PÁGINA SOBRE) -------------------- */
+
+.final-cta-box {
+    width: 100%;
+    max-width: 800px; /* Limita a largura para centralizar a caixa */
+    margin: 60px auto 30px auto; /* Adiciona margem acima, centraliza a caixa */
+    padding: 30px;
+    
+    /* ⬇️ ESTILIZAÇÃO MINIMALISTA (Sutil) ⬇️ */
+    background-color: #ffffff; /* Fundo branco para contraste com o cinza da página */
+    border-radius: 15px; /* Cantos arredondados */
+    border: 1px solid rgba(90, 30, 166, 0.1); /* Borda muito suave, quase transparente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra MUITO sutil */
+    text-align: center; /* Centraliza o botão dentro da caixa */
+    /* ⬆️ FIM DA ESTILIZAÇÃO MINIMALISTA ⬆️ */
+}
+
+/* Regra para deixar o botão maior, reforçando o CTA */
+.final-cta-box .cta-button {
+    padding: 15px 40px; 
+    font-size: 1.1em;
+}
+
+/* Garante que o container do botão (se for o btn-center) fique centralizado */
+.final-cta-box .btn-center {
+    text-align: center;
+}
