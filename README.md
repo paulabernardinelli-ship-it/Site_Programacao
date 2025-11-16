@@ -1,169 +1,158 @@
-# Os Gatos Indicam
+README - Os Gatos Indicam
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![Responsive](https://img.shields.io/badge/Design-Responsive-green)
+Descrição do Projeto
+Os Gatos Indicam é um site de recomendação literária com uma abordagem única e encantadora: nossa equipe felina especializada em literatura seleciona livros personalizados baseados nas preferências dos usuários. O projeto combina um design acolhedor com funcionalidades interativas para criar uma experiência de descoberta literária memorável.
 
-Uma plataforma de indicação literária onde gatos especialistas recomendam os livros perfeitos para cada leitor. Desenvolvido como projeto acadêmico para a Faculdade de Tecnologia de Carapicuíba.
+Funcionalidades Principais
+Páginas do Site
+Início (index.html): Apresentação do conceito com design atrativo
 
-Funcionalidades
+Cadastro (cadastro.html): Formulário completo com validação e integração ViaCEP
 
-- Recomendações Personalizadas - Sistema inteligente de indicações baseado nas preferências do usuário
-- Cadastro Completo - Formulário com validação e integração ViaCEP para endereço
-- Interface Temática - Design aconchegante com tema felino e paleta de cores cuidadosamente escolhida
-- Totalmente Responsivo - Adaptável a todos os dispositivos (mobile, tablet, desktop)
-- Animações Suaves - Transições e efeitos visuais para melhor experiência do usuário
-- Busca Automática de CEP - Integração com API ViaCEP para preenchimento inteligente de endereços
+Preferências (produtos.html): Configuração de gostos literários para recomendações personalizadas
 
-Como Executar o Projeto
+Contato (contato.html): Formulário de contato funcional
 
-Opção 1: Servidor Local Simples
+Sobre (sobre.html): Informações sobre a equipe e metodologia
 
-# Clone o repositório
-git clone https://github.com/seu-usuario/os-gatos-indicam.git
+Recursos Técnicos
+Design Responsivo: Adaptável a todos os dispositivos
 
-# Entre na pasta do projeto
-cd os-gatos-indicam
+Validação de Formulários: Feedback em tempo real
 
-# Abra o arquivo principal no navegador
-open index.html
-# ou
-start index.html
-# ou simplesmente arraste o arquivo index.html para o navegador
+Integração ViaCEP: Preenchimento automático de endereço
 
-# Se você tem o Node.js instalado
-npx live-server
+Sistema de Recomendações: Banco de dados com +15 livros categorizados
 
-# Ou instale globalmente
-npm install -g live-server
-live-server
-
-Estrutura do Projeto
-
-os-gatos-indicam/
-│
-├── 📄 index.html              # Página inicial
-├── 📄 cadastro.html           # Formulário de cadastro
-├── 📄 produtos.html           # Preferências e recomendações
-├── 📄 contato.html            # Página de contato
-├── 📄 sobre.html              # Sobre o projeto
-├── 🎨 style.css               # Estilos principais
-├── ⚡ script.js               # Script do cadastro e ViaCEP
-├── 📚 script-manual.js        # Sistema de recomendações
-│
-└── 📁 imagens/                # Assets do projeto
-    ├── 🐱 gatos/
-    └── 📖 livros/
+Animações CSS: Experiência visual suave e atrativa
 
 Tecnologias Utilizadas
-Frontend:
-HTML5 Semântico
-CSS3 com Grid e Flexbox
-JavaScript Vanilla (ES6+)
-Google Fonts (Cormorant Garamond, Nunito)
+HTML5: Estrutura semântica
 
-APIs e Integrações:
-ViaCEP API - Busca automática de endereços
-Custom CSS Properties - Sistema de variáveis de cores
+CSS3: Design moderno com variáveis CSS e animações
 
-Recursos:
-Design System com paleta de cores customizada
-Animações CSS e transições
-Media Queries para responsividade
-Formulários com validação client-side
+JavaScript: Interatividade e manipulação de dados
 
-Paleta de Cores
-Cor	                  Hexadecimal	   Uso
-Marrom Principal	    #8B4513	       Botões, destaques
-Dourado	              #FFD700	       Elementos secundários
-Bege Claro	          #FFF8F0	       Fundo principal
-Bege	                #F5F5DC	       Cards e containers
-Marrom Escuro	        #2F1B0C	       Texto principal
+Google Fonts: Tipografia (Nunito + Cormorant Garamond)
 
-Páginas do Site
+ViaCEP API: Integração para busca de endereços
 
-Página Inicial
-Apresentação do conceito "Os Gatos Indicam"
-Call-to-action para descobrir recomendações
-Cards informativos sobre a curadoria
+Design System
+Cores Principais
+Marrom Saddle (#8B4513): Cor de destaque
 
-Cadastro
-Formulário completo de dados pessoais
-Integração com ViaCEP para endereço
-Validações em tempo real
-Design em grid responsivo
+Verde Suave (#A3BE8C): Botões e elementos interativos
 
-Preferências
-Seleção de gêneros literários favoritos
-Configuração de hábitos de leitura
-Sistema de recomendações personalizadas
-Exibição de livros com indicações dos "gatos"
+Bege Claro (#FFF8F0): Fundo principal
 
-Contato
-Informações de contato da equipe
-Formulário de mensagens categorizado
-Validação e feedback visual
+Marrom Chocolate (#2F1B0C): Texto principal
 
-Sobre
-Explicação da missão do projeto
-Apresentação da equipe felina
-Funcionamento do sistema de indicações
+Tipografia
+Nunito: Texto geral e interface
 
-Funcionalidades Técnicas
+Cormorant Garamond: Títulos e elementos destacados
+
+Estrutura de Arquivos
+os-gatos-indicam/
+│
+├── index.html          # Página inicial
+├── cadastro.html       # Formulário de cadastro
+├── produtos.html       # Preferências e recomendações
+├── contato.html        # Página de contato
+├── sobre.html          # Sobre o projeto
+├── style.css           # Estilos principais
+├── script.js           # Script para cadastro/ViaCEP
+├── script-manual.js    # Sistema de recomendações
+└── img/               # Diretório de imagens
+    ├── Gatos.png      # Imagem principal
+    ├── gato1.png      # Fotos dos gatos
+    ├── gato2.png
+    ├── ...
+    └── capas-livros/  # Capas dos livros recomendados
+
+Como Executar
+Clone o repositório:
+
+git clone https://github.com/seu-usuario/os-gatos-indicam.git
+
+Abra o projeto:
+
+Navegue até a pasta do projeto
+
+Abra index.html em seu navegador
+
+Ou sirva com um servidor local:
+# Com Node.js
+npx http-server
+
 Sistema de Recomendações
-Banco de dados local de livros por gênero
-Algoritmo de filtragem baseado em preferências
-Indicações personalizadas com "toque felino"
-Integração ViaCEP
-Busca automática de endereço por CEP
-Validação de formato de CEP
-Preenchimento automático de campos
-Tratamento de erros e feedback
-Validações de Formulário
-Validação em tempo real de email
-Verificação de idade (12-120 anos)
-Campos obrigatórios destacados
-Mensagens de erro claras
-Design Responsivo
-Breakpoints para mobile, tablet e desktop
-Menu de navegação adaptável
-Grids que se reorganizam automaticamente
-Tipografia escalável
+Gêneros Disponíveis
+Romance
 
-Como Usar
-Acesse a Página Inicial - Conheça o conceito do site
-Faça seu Cadastro - Complete o formulário com seus dados
-Configure Preferências - Selecione gêneros e hábitos de leitura
-Receba Indicações - Veja os livros recomendados pelos nossos gatos especialistas
-Entre em Contato - Tire dúvidas ou envie sugestões
+Ficção
 
-Hospedagem
-O site pode ser hospedado em qualquer serviço de hospedagem estática:
-GitHub Pages (Gratuito)
-Netlify (Gratuito)
-Vercel (Gratuito)
-Firebase Hosting (Gratuito)
-Qualquer servidor web tradicional
+Não-Ficção
 
-Contribuindo
-Contribuições são bem-vindas! Siga estos passos:
-Fork o projeto
-Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
-Commit suas mudanças (git commit -m 'Add some AmazingFeature')
-Push para a branch (git push origin feature/AmazingFeature)
-Abra um Pull Request
+Terror/Suspense
 
-Licença
-Este projeto foi desenvolvido para fins acadêmicos na Faculdade de Tecnologia de Carapicuíba.
+Fantasia
 
-Autores
-Tatiane de Sene e Paula Bernardinelli Casemiro - Desenvolvimento e Design - SeuGitHub
+Como Funciona
+Usuário seleciona gêneros preferidos
 
-Agradecimentos
-Faculdade de Tecnologia de Carapicuíba
-ViaCEP pelo serviço de consulta de CEP
-Google Fonts pelas tipografias
-Comunidade de desenvolvimento web
+Sistema filtra livros por gênero
 
-Desenvolvido com ❤️ e muito ☕ para a disciplina de Programação em Microinformática
+Cada recomendação inclui:
+
+Capa do livro
+
+Informações detalhadas
+
+Indicação personalizada de um gato
+
+Metadados (ano, páginas, descrição)
+
+Responsividade
+O site é totalmente responsivo, adaptando-se a:
+
+Desktop (1200px+)
+
+Tablet (768px - 1199px)
+
+Mobile (até 767px)
+
+Personalização
+Adicionar Novos Livros
+Edite script-manual.js na seção livrosPorGenero:
+const livrosPorGenero = {
+  seu_genero: 
+ 
+  const livrosPorGenero = {
+  seu_genero: [
+    {
+      titulo: "Novo Livro",
+      autor: "Autor",
+      capa: "img/capa.png",
+      ano: 2024,
+      paginas: 300,
+      descricao: "Descrição do livro",
+      indicacao: {
+        foto: "img/gatoX.png",
+        texto: "Recomendação do gato"
+      }
+    }
+  ]
+}
+
+Desenvolvido com ❤️ e muito ronronar pela equipe felina dos Gatos Indicam 🐾
+
+
+
+
+
+
+
+
+
+
+
