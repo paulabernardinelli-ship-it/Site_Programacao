@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function(){
         descricao: "A órfã Rin escapa da vida de servidão ao entrar na academia militar de elite Sinegard. Em meio à disciplina brutal e ao descobrimento de um dom xamânico perigoso, ela é forçada a confrontar o verdadeiro custo do poder e da vingança quando uma guerra devastadora irrompe no Império Nikan.",
         indicacao: {
           foto: "img/gato4.png",
-          texto: "Miau! Fantasia militar com profundidade histórica e personagens complexos. Uma leitura qimperdível! 🐱⚔️"
+          texto: "Miau! Fantasia militar com profundidade histórica e personagens complexos. Uma leitura imperdível! 🐱⚔️"
         }
       }
     ]
@@ -370,3 +370,4 @@ document.addEventListener('DOMContentLoaded', function(){
     }, 1000); // Pequeno delay para melhor UX
   });
 });
+
